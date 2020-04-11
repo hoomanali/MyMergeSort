@@ -1,5 +1,7 @@
 package com.alihooman;
 
+import java.util.ArrayList;
+
 /**
  * Parse incoming arguments from command line.
  */
@@ -41,6 +43,21 @@ public class ParseArgs {
             }
         }
         return hasNonIntegers;
+    }
+
+    /**
+     * Parses input and return an list of values.
+     * @param args The string of space separated value.
+     * @return An ArrayList of values.
+     */
+    static ArrayList<Double>  getNumberList(String[] args) {
+        ArrayList<Double> numberList = new ArrayList<>();
+
+        for(String number : args[0].split("\\s")) {
+            numberList.add(Double.parseDouble(number));
+        }
+
+        return numberList;
     }
 
 }

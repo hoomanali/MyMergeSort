@@ -2,6 +2,9 @@ package com.alihooman;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParseArgsTest {
@@ -76,5 +79,18 @@ class ParseArgsTest {
                     ParseArgs.isArgsValid(new String[]{"45 67 9 0 3"});
                 }
         );
+    }
+
+    @Test
+    void getNumberList_NegativeAndPositiveTest() {
+        List<Double> list = new ArrayList<>();
+        list.add(-0.0);
+        list.add(5.6);
+        list.add(4.0);
+        list.add(-64.04);
+        list.add(0345634.043);
+        List<Double> result = ParseArgs.getNumberList(new String[]{"-0.0 5.6 +4.0 -64.04 0345634.043"});
+
+        assertEquals(result, list);
     }
 }
